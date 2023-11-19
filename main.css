@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f8fb;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.intro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.intro-content {
+    max-width: 600px;
+    text-align: center;
+}
+
+.mypic img {
+    border-radius: 50%;
+    max-width: 100%;
+    height: auto;
+}

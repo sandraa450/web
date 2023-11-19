@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-box">
+
+            <h2>Sign up to create your account</h2>
+            <form id="signup-form" name="signup-form" method="post" action="signup.php">
+                <div class="input-group">
+                    <div class="input-field">
+                        <input type="text" id="un" name = "username" placeholder="Username">
+                        <br>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" id="fn" name = "fullname" placeholder="Full name">
+                        <br>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" id="pw" name = "password" placeholder="Password">
+                        <br>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" id="confpw" name = "confirmpassword" placeholder="Confirm Password">
+                        <br>
+                    </div>
+                    <div>
+                        <label for="dob">Date of Birth</label>
+                        <br><br>
+                        <input type="date" name = "DateOfBirth">
+                        <br>
+                    </div>
+                    <div>
+                        <br>
+                        <label for="sex"></label>
+                        <input type="radio" name="sex" id="male" value="m">
+                        <label for="male" class="radio male">
+                            <span>Male</span>
+                        </label>
+                        <input type="radio" name="sex" checked id="female" value="f">
+                        <label for="female" class="radio female">
+                            <span>Female</span>
+                        </label>
+                    </div>
+                    <br>
+                    <input type="button" value="Sign Up" class="button" onclick="SignUp()" style="margin-bottom: 20px;">
+                    <div>
+                        <a href="index.php" style="color: #9dc1d3; cursor: pointer; text-align: center;">
+                            <p>if you have an account, Log in here</p>
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function SignUp() {
+            var form = document.getElementById('signup-form');
+            var un = document.getElementById('un').value.trim();
+            var fn = document.getElementById('fn').value.trim();
+            var pw = document.getElementById('pw').value.trim();
+            var confpw = document.getElementById('confpw').value.trim();
+            var male = document.getElementById('male').value.trim();
+            var female = document.getElementById('female').value.trim();
+
+            var error = '';
+
+            if (un === '') {
+                error += 'Username is required\n';
+            }
+            if (fn === '') {
+                error += 'Full name is required\n';
+            }
+            if (pw === '') {
+                error += 'Password is required\n';
+            }
+            if (confpw === '') {
+                error += 'Confirm your password\n';
+            }
+
+            if (pw !== confpw) {
+                error += 'Passwords do not match\n';
+            }
+
+            if (error !== '') {
+                alert(error);
+            } else {
+                // Submit the form
+                form.submit();
+            }
+        }
+    </script>
+</body>
+
+</html>
