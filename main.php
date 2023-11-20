@@ -112,7 +112,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 100px; /* Adjust the margin as needed */
+        margin-top: 100px; 
     }
 
     .intro-content {
@@ -124,7 +124,7 @@
     }
 
     .mypic img {
-        border-radius: 50%; /* Make the image circular */
+        border-radius: 50%;
         max-width: 100%;
         height: auto;
     }
