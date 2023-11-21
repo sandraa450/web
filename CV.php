@@ -11,7 +11,7 @@
 <!DOCTYPE html>
     <head>
         <meta charset="UTF-8">
-        <title>Main Page</title>
+        <title>CV Page</title>
         <link rel="stylesheet"  href="main.css" >
         <link rel="stylesheet"  href="styleCV.css" >
     </head>
