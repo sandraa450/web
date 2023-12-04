@@ -7,58 +7,30 @@
 
 
 
-
 <!DOCTYPE html>
     <head>
         <meta charset="UTF-8">
         <title>CV Page</title>
-        <link rel="stylesheet"  href="main.css" >
         <link rel="stylesheet"  href="styleCV.css" >
-    </head>
-
-    <body>
-    <div class="span" id="header">
-            <div id="menu">
-                <span>Menu</span>
-                <div class="dropdown-options">
-                    <ul>
-                        <a href="main.php"> 
-                            <li>Main</li>
-                        </a>
-                        <a href="CV.php">
-                            <li>CV</li>   
-                        </a>
-                        <a href="gallery.php">
-                            <li>Gallery</li>   
-                        </a>
-                        <a href="contactus.php">
-                            <li>ContactUs</li>
-                        </a>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="welcome" style="float: right;">
-                <div class="text" style="display: inline-block;"> 
-                    <?php
-                        echo '<p>';
-                        echo "Welcome ";
-                        echo $_SESSION["username"];
-                        echo '</p>';
-                    ?>
-                </div>
-                <button class="logout-button" style="display: inline-block;" id="button" onclick="logout()">Logout</button>
-            </div>
-
-        </div>
+        <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
+        <title> My CV </title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <style>
-            #header {
+           #header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
     background: #3498db;
     height: 55px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
+}
+
+body {
+    margin-top: 55px;
 }
 
 #menu {
@@ -94,12 +66,11 @@
 .welcome {
     display: flex;
     align-items: center;
-    color: #fff;
 }
 
 .text {
     margin-right: 10px;
-    color: black;
+    color: #fff;
 }
 
 .logout-button {
@@ -112,16 +83,44 @@
     border-radius: 5px;
 }
 
-
-
         </style>
-    <head>
-        <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
-        <title> My CV </title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel = "stylesheet" type = "text/css" href = "styleCV.css"
     </head>
     <body>
+    <div class="span" id="header">
+            <div id="menu">
+                <span>Menu</span>
+                <div class="dropdown-options">
+                    <ul>
+                        <a href="main.php"> 
+                            <li>Main</li>
+                        </a>
+                        <a href="CV.php">
+                            <li>CV</li>   
+                        </a>
+                        <a href="gallery.php">
+                            <li>Gallery</li>   
+                        </a>
+                        <a href="contactus.php">
+                            <li>ContactUs</li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="welcome" style="float: right;">
+                <div class="text" style="display: inline-block;"> 
+                    <?php
+                        echo '<p>';
+                        echo "Welcome ";
+                        echo $_SESSION["username"];
+                        echo '</p>';
+                    ?>
+                </div>
+                <button class="logout-button" style="display: inline-block;" id="button" onclick="logout()">Logout</button>
+</div>
+
+
+        </div>
         <div class = "container">
             <div class ="left_Side">
                 <div class = "profileText">
