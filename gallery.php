@@ -10,100 +10,93 @@
     <meta charset="UTF-8">
     <title>My Gallery</title>
     <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f8fb;
-        color: #333;
-        margin: 0;
-        padding: 0;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f8fb;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
 
-    .row {
-        display: block;
-        width: 100%;
-    }
+        .row {
+            display: block;
+            width: 100%;
+        }
 
-    #header {
-        background: #FAFAFA;
-        height: 55px;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 2;
-    }
+        #header {
+            background: #FAFAFA;
+            height: 55px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 2;
+        }
 
-    .gallery {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        padding: 20px;
-        margin-top: 55px;
-    }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+            margin-top: 55px;
+        }
 
-    .img-cont {
-        margin: 10px; /* Adjusted margin to provide more space around each image */
-        width: 200px;
-        height: 200px;
-        overflow: hidden;
-    }
+        .img-cont {
+            margin: 10px;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
 
-    .img-link {
-        display: block;
-        width: 100%;
-        height: 100%;
-        text-decoration: none;
-        color: #333;
-        overflow: hidden;
-    }
+        .img-link {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: #333;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+        }
+        .img-link:hover {
+            transform: scale(1.1); 
+        }
 
-    .img-link img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 5px;
-    }
-</style>
+        .img-link img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
 
-</head>
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
 
-<body>
-<div class="span" id="header">
-            <div id="menu">
-                <span>Menu</span>
-                <div class="dropdown-options">
-                    <ul>
-                        <a href="main.php"> 
-                            <li>Main</li>
-                        </a>
-                        <a href="CV.php">
-                            <li>CV</li>   
-                        </a>
-                        <a href="gallery.php">
-                            <li>Gallery</li>   
-                        </a>
-                        <a href="contactus.php">
-                            <li>ContactUs</li>
-                        </a>
-                    </ul>
-                </div>
-            </div>
+        .overlay img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+            border-radius: 5px;
+        }
 
-            <div class="welcome" style="float: right;">
-                <div class="text" style="display: inline-block;"> 
-                    <?php
-                        echo '<p>';
-                        echo "Welcome ";
-                        echo $_SESSION["username"];
-                        echo '</p>';
-                    ?>
-                </div>
-                <button class="logout-button" style="display: inline-block;" id="button" onclick="logout()">Logout</button>
-            </div>
-
-        </div>
-<style>
-#header {
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        #header {
     background: #3498db;
     height: 55px;
     display: flex;
@@ -162,46 +155,81 @@
     border-radius: 5px;
 }
 
+    </style>
 
+</head>
 
-        </style>
-
-    <div class="gallery">
-        <?php
-            $imageNames = file('gallery.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-            foreach($imageNames as $image){
-                $imageLink =  $image;
-                echo '<div class="img-cont">';
-                    echo "<a class=\"img-link\" href=\"$imageLink\" target=\"_self\" >";
-                        echo "<img src=\"$imageLink\">";
-                    echo '</a>';
-                echo '</div>';
-            }
-        ?>
+<body>
+<div class="span" id="header">
+    <div id="menu">
+        <span>Menu</span>
+        <div class="dropdown-options">
+            <ul>
+                <a href="main.php">
+                    <li>Main</li>
+                </a>
+                <a href="CV.php">
+                    <li>CV</li>
+                </a>
+                <a href="gallery.php">
+                    <li>Gallery</li>
+                </a>
+                <a href="contactus.php">
+                    <li>ContactUs</li>
+                </a>
+            </ul>
+        </div>
     </div>
 
-    <script>
-        function logout() {
-            location.href = "index.php";
-        }
+    <div class="welcome" style="float: right;">
+        <div class="text" style="display: inline-block;">
+            <?php
+                echo '<p>';
+                echo "Welcome ";
+                echo $_SESSION["username"];
+                echo '</p>';
+            ?>
+        </div>
+        <button class="logout-button" style="display: inline-block;" id="button" onclick="logout()">Logout</button>
+    </div>
 
-        function toggleDropdown() {
-            var dropdownContent = document.querySelector('.dropdown-content');
-            dropdownContent.style.display = (dropdownContent.style.display === 'block') ? 'none' : 'block';
-        }
+</div>
 
-        // Close the dropdown if the user clicks outside of it
-        window.onclick = function(event) {
-            if (!event.target.matches('.icon')) {
-                var dropdowns = document.getElementsByClassName('dropdown-content');
-                for (var i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.style.display === 'block') {
-                        openDropdown.style.display = 'none';
-                    }
-                }
-            }
+<div class="gallery">
+    <?php
+        $imageNames = file('gallery.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        foreach($imageNames as $image){
+            $imageLink =  $image;
+            echo '<div class="img-cont">';
+                echo "<a class=\"img-link\" href=\"$imageLink\" onclick=\"showImage('$imageLink'); return false;\">";
+                    echo "<img src=\"$imageLink\">";
+                echo '</a>';
+            echo '</div>';
         }
-    </script>
+    ?>
+</div>
+
+<div class="overlay" id="overlay" onclick="hideImage();">
+    <span class="close-btn" onclick="hideImage()">&times;</span>
+    <img id="overlay-image" src="" alt="Overlay Image">
+</div>
+
+<script>
+    function logout() {
+        location.href = "index.php";
+    }
+
+    function showImage(imageLink) {
+        var overlay = document.getElementById('overlay');
+        var overlayImage = document.getElementById('overlay-image');
+        overlayImage.src = imageLink;
+        overlay.style.display = 'flex';
+    }
+
+    function hideImage() {
+        var overlay = document.getElementById('overlay');
+        overlay.style.display = 'none';
+    }
+</script>
 </body>
 </html>
