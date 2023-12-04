@@ -108,26 +108,50 @@
     cursor: pointer;
     border-radius: 5px;
 }
+body {
+    background-image: url('mainbackground.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
 .intro {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 100px; 
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
-    .intro-content {
-        text-align: center;
-    }
+.intro-content {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+     max-width: 600px; 
+    width: 80%; 
+    box-sizing:
+}
 
-    .intro-content p {
-        margin: 0;
-    }
+.intro-content p {
+    margin: 0;
+}
 
-    .mypic img {
-        border-radius: 50%;
-        max-width: 100%;
-        height: auto;
-    }
+.mypic {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-top: 20px;
+}
+
+.mypic img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
 
 
 
@@ -150,9 +174,7 @@
                 </p> 
             </div>
 
-            <div class="mypic">
-                <img src="me.jpg" alt="Oups you could't see my picture :(" />
-            </div>
+            
 
         </div>
 
